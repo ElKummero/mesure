@@ -19,19 +19,30 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'Nom',
-        'Prenom',
-        'Photo',
-        'Email',
-        'EstAdministrateur'
+        'nom',
+        'prenom',
+        'photo',
+        'email',
+        'password',
+        'estAdministrateur',
     ];
 
     /**
-     * The attributes excluded from the model's JSON form.
+     * The attributes that should be hidden for arrays.
      *
-     * @var string[]
+     * @var array
      */
     protected $hidden = [
-        'Password',
+        'password',
+        'remember_token',
+    ];
+
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'email_verified_at' => 'datetime',
     ];
 }
